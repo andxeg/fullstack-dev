@@ -14,7 +14,12 @@ else
 	ssh-add ./my_winterschools
 fi
 
+# for nginx
 # ssh -N -f -A -i my_winterschools -L 127.0.0.1:9999:192.168.1.64:80 -L 127.0.0.1:9998:192.168.1.107:80 student6@95.163.251.121
+
+# for mysql
+# ssh -N -f -A -i my_winterschools -L 127.0.0.1:3333:192.168.1.64:3306  student6@95.163.251.121
+# mysql -u user -h 127.0.0.1 -P 3333 -p
 
 # for connection to backends
 # ssh -N -f -A -i my_winterschools -L 127.0.0.1:9999:$BACK_1:80 -L 127.0.0.1:9998:$BACK_2:80 student6@$JUMP_HOST

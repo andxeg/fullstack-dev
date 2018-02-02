@@ -10,6 +10,9 @@ sudo sh -c "echo -e '[nginx]\nname=nginx repo\nbaseurl=http://nginx.org/packages
 echo 'install nginx'
 sudo yum install -y nginx
 
+echo 'add new config to /etc/nginx/conf.d/'
+sudo cp ../config/app_nginx.conf /etc/nginx/conf.d
+
 echo 'start nginx'
 sudo systemctl start nginx
 sudo systemctl enable nginx

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 USER='student6'
-CURRENT_DIR="$(pwd)"
 
 # check for root
 USER_ID=$(id -u)

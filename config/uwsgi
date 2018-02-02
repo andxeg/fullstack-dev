@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Simple uWSGI init.d script
+
+PROJECT_DIR="/home/student6/fullstack-dev"
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+EXEC=$PROJECT_DIR'/venv/bin/uwsgi'
+CONFDIR=$PROJECT_DIR
+PIDFILE=/var/run/uwsgi.pid
+LOGFILE=/var/log/uwsgi.log
+UserID=student6
+GroupID=student6
+
+case "$1" in
+    start)
+        echo "Starting uWSGI server..."
+        $EXEC --emperor $CONFDIR --pidfile $PIDFILE --daemonize $LOGFILE --uid $UserID --gid $GroupID
+        echo "uWSGI started"
+        ;;
+    stop)
+        echo "Stopping ..."
+        $EXEC --stop $PIDFILE --vacuum
+        echo "uWSGI stopped"
+        rm $PIDFILE
+        ;;
+    *)
+        echo "Please use start or stop as first argument"
+        ;;
+esac
