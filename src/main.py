@@ -6,13 +6,15 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 mysql = MySQL()
 
-with open("confi.json", "r") as f:
-	config_dict = json.load(f)
+with open("config.json", "r") as f:
+        config_dict = json.load(f)
 
-app.config['MYSQL_USER'] = config_dict['user']
-app.config['MYSQL_PASSWORD'] = config_dict['password']
-app.config['MYSQL_DB'] = config_dict['db']
-app.config['MYSQL_HOST'] = config_dict['host']
+db_config = config_dict['DATABASES'][0]
+
+app.config['MYSQL_USER'] = db_config['user']
+app.config['MYSQL_PASSWORD'] = db_config['password']
+app.config['MYSQL_DB'] = db_config['db']
+app.config['MYSQL_HOST'] = db_config['host']
 mysql.init_app(app)
 
 
