@@ -11,5 +11,4 @@ sudo chmod 755 /etc/init.d/uwsgi
 cp  ../config/app_uwsgi.ini $PROJECT_DIR
 
 sudo systemctl daemon-reload
-sudo systemctl start uwsgi
-
+sudo systemctl restart uwsgi

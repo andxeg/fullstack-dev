@@ -21,7 +21,7 @@ sudo setenforce 0
 
 # install basic packages
 echo '[INFO] Install basic packages'
-sudo yum install -y mc vim git wget
+sudo yum install -y mc vim git wget screen 
 echo "alias mc='. /usr/libexec/mc/mc-wrapper.sh'" >> /home/$USER/.bashrc
 
 
@@ -30,7 +30,7 @@ echo '[INFO] Epel-release installation'
 sudo yum install -y epel-release
 
 
-# instead build-essential
+# analogue to build-essential
 echo '[INFO] Development Tools installation'
 sudo yum groupinstall -y 'Development Tools'
 sudo yum install -y python-devel mysql-devel
@@ -43,7 +43,7 @@ sudo pip install --upgrade pip
 sudo pip install virtualenv
 
 
-# go to project directory and configure environment
+# go to the project directory and configure environment
 echo '[INFO] Environment configuration'
 sudo rm -rf $PROJECT_DIR
 sudo mkdir $PROJECT_DIR
@@ -59,7 +59,9 @@ pip install Flask
 pip install uwsgi
 # see also emperor mode of uwsgi
 # link -> https://gist.github.com/bluekvirus/62691d0bed98f45fe153a600e127e37b
-pip install flask-mysqldb
+# pip install flask-mysqldb
+# pip install flask-sqlalchemy
+pip install mysql-connector-python-rf
 
 
 # go to project directory and download git-repository with scripts and source code
